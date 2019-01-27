@@ -16,7 +16,7 @@ Profiles:
                 Organizations:
                     - *Org1
                     - *Org2
-    indianchannel:
+    townchannel:
         Consortium: SampleConsortium
         Application:
             <<: *ApplicationDefaults
