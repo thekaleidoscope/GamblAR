@@ -1,5 +1,5 @@
 OrdererOrgs:
-  - Name: OrdererOrg
+  - Name: Orderer
     Domain: gamblar.com
     Specs:
       - Hostname: orderer

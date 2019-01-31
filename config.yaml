@@ -139,6 +139,10 @@ organizations:
       - peer1.org2.gamblar.com
     certificateAuthorities:
       - ca.org2.gamblar.com
+
+  orderer:
+    mspid: gabriel.com
+    cryptoPath: ordererOrganizations/gamblar.com/users/{userName}@gamblar.com/msp
     # [Optional]. Certificate Authorities issue certificates for identification purposes in a Fabric based
     # network. Typically certificates provisioning is done in a separate process outside of the
     # runtime network. Fabric-CA is a special certificate authority that provides a REST APIs for
@@ -171,7 +175,7 @@ orderers:
 
     tlsCACerts:
       # Certificate location absolute path
-      path: ${GOPATH}/src/github.com/GamblAR/fixtures/crypto-config/ordererOrganizations/gamblar.com/tlsca/tlsca.gamblar.com-cert.pem
+      path: ${GOPATH}/src/github.com/GamblAR/units/crypto-config/ordererOrganizations/gamblar.com/tlsca/tlsca.gamblar.com-cert.pem
 #
 # List of peers to send various requests to, including endorsement, query
 # and event listener registration.
@@ -197,7 +201,7 @@ peers:
 
     tlsCACerts:
       # Certificate location absolute path
-      path: ${GOPATH}/src/github.com/GamblAR/fixtures/crypto-config/peerOrganizations/org1.gamblar.com/tlsca/tlsca.org1.gamblar.com-cert.pem
+      path: ${GOPATH}/src/github.com/GamblAR/units/crypto-config/peerOrganizations/org1.gamblar.com/tlsca/tlsca.org1.gamblar.com-cert.pem
 
   peer1.org1.gamblar.com:
     # this URL is used to send endorsement and query requests
@@ -219,7 +223,7 @@ peers:
 
     tlsCACerts:
       # Certificate location absolute path
-      path: ${GOPATH}/src/github.com/GamblAR/fixtures/crypto-config/peerOrganizations/org1.gamblar.com/tlsca/tlsca.org1.gamblar.com-cert.pem
+      path: ${GOPATH}/src/github.com/GamblAR/units/crypto-config/peerOrganizations/org1.gamblar.com/tlsca/tlsca.org1.gamblar.com-cert.pem
 
   peer0.org2.gamblar.com:
     # this URL is used to send endorsement and query requests
@@ -241,7 +245,7 @@ peers:
 
     tlsCACerts:
       # Certificate location absolute path
-      path: ${GOPATH}/src/github.com/GamblAR/fixtures/crypto-config/peerOrganizations/org2.gamblar.com/tlsca/tlsca.org2.gamblar.com-cert.pem
+      path: ${GOPATH}/src/github.com/GamblAR/units/crypto-config/peerOrganizations/org2.gamblar.com/tlsca/tlsca.org2.gamblar.com-cert.pem
 
   peer1.org2.gamblar.com:
     # this URL is used to send endorsement and query requests
@@ -263,7 +267,7 @@ peers:
 
     tlsCACerts:
       # Certificate location absolute path
-      path: ${GOPATH}/src/github.com/GamblAR/fixtures/crypto-config/peerOrganizations/org2.gamblar.com/tlsca/tlsca.org2.gamblar.com-cert.pem
+      path: ${GOPATH}/src/github.com/GamblAR/units/crypto-config/peerOrganizations/org2.gamblar.com/tlsca/tlsca.org2.gamblar.com-cert.pem
 
 
 
@@ -286,7 +290,7 @@ certificateAuthorities:
     caName: ca.org1.gamblar.com
     tlsCACerts:
       # Certificate location absolute path
-      path: ${GOPATH}/src/github.com/GamblAR/fixtures/crypto-config/peerOrganizations/org1.gamblar.com/ca/ca.org1.gamblar.com-cert.pem
+      path: ${GOPATH}/src/github.com/GamblAR/units/crypto-config/peerOrganizations/org1.gamblar.com/ca/ca.org1.gamblar.com-cert.pem
   
   ca.org2.gamblar.com:
     url: http://localhost:9054
@@ -301,7 +305,7 @@ certificateAuthorities:
     caName: ca.org2.gamblar.com
     tlsCACerts:
       # Certificate location absolute path
-      path: ${GOPATH}/src/github.com/GamblAR/fixtures/crypto-config/peerOrganizations/org2.gamblar.com/ca/ca.org2.gamblar.com-cert.pem
+      path: ${GOPATH}/src/github.com/GamblAR/units/crypto-config/peerOrganizations/org2.gamblar.com/ca/ca.org2.gamblar.com-cert.pem
 
 entityMatchers:
   peer:

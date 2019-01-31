@@ -4,7 +4,7 @@ Profiles:
         Orderer:
             <<: *OrdererDefaults
             Organizations:
-                - *OrdererOrg   
+                - *Orderer   
         Application:
             <<: *ApplicationDefaults
             Organizations:
@@ -27,8 +27,8 @@ Profiles:
 
 
 Organizations:
-    - &OrdererOrg
-        Name: OrdererOrg
+    - &Orderer
+        Name: Orderer
         ID: gamblar.com
         AdminPrincipal: Role.ADMIN
         MSPDir: crypto-config/ordererOrganizations/gamblar.com/msp
