@@ -29,9 +29,9 @@ func (t *Account) Invoke(stub shim.ChaincodeStubInterface) peer.Response {
 	var result string
 	var err error
 
-	if fn == "set" {
+	if fn == "setAccountInfo" {
 		result, err = chaincodehelpers.SetAccountInfo(stub, args)
-	} else {
+	} else if fn == "getAccountInfo" {
 		result, err = chaincodehelpers.GetAccountInfo(stub, args)
 	}
 

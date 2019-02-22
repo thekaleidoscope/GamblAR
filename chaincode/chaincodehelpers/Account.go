@@ -15,13 +15,13 @@ func SetAccountInfo(stub shim.ChaincodeStubInterface, args []string) (string, er
 	err := stub.PutState(args[0], []byte(args[1]))
 
 	if err != nil {
-		return "", fmt.Errorf("Failed to set asset: %s", args[0])
+		return "", fmt.Errorf("Failed to set account with info: %s", args[0])
 	}
 
 	// Notify listeners that an event "eventInvoke" have been executed
 	err = stub.SetEvent("eventInvoke", []byte{})
 	if err != nil {
-		return "", fmt.Errorf("Failed to set event: %s", err)
+		return "", fmt.Errorf("Failed to set account: %s", err)
 	}
 
 	// Return this value in response
@@ -37,11 +37,11 @@ func GetAccountInfo(stub shim.ChaincodeStubInterface, args []string) (string, er
 	value, err := stub.GetState(args[0])
 
 	if err != nil {
-		return "", fmt.Errorf("Failed to set asset: %s with error", args[0], err)
+		return "", fmt.Errorf("Failed to get account with info: %s with error", args[0], err)
 	}
 
 	if value == nil {
-		return "", fmt.Errorf("Asset not found: %s", args[0])
+		return "", fmt.Errorf("account not found: %s", args[0])
 	}
 
 	return string(value), nil

@@ -39,4 +39,12 @@ func main() {
 		fmt.Println("-------Successful  Creating And Join Channel For each Organizations--------")
 	}
 
+	txID, err := game_handler.SetAsset([]string{"Acc1", "1000"})
+	if err != nil {
+		fmt.Println(errors.Wrap(err, "Account SetAsset game handler failed"))
+
+	} else {
+		fmt.Println("-------Successful  SetAsset Account--------")
+	}
+	fmt.Println(txID)
 }

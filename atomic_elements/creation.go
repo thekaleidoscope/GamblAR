@@ -7,14 +7,13 @@ import (
 	"strings"
 
 	"github.com/hyperledger/fabric-sdk-go/pkg/client/channel"
-	"github.com/hyperledger/fabric-sdk-go/pkg/client/event"
 	mspclient "github.com/hyperledger/fabric-sdk-go/pkg/client/msp"
 	"github.com/hyperledger/fabric-sdk-go/pkg/common/errors/retry"
 	"github.com/hyperledger/fabric-sdk-go/pkg/common/providers/msp"
 
-	"github.com/fabric-sdk-go/pkg/client/resmgmt"
-	"github.com/fabric-sdk-go/pkg/core/config"
-	"github.com/fabric-sdk-go/pkg/fabsdk"
+	"github.com/hyperledger/fabric-sdk-go/pkg/client/resmgmt"
+	"github.com/hyperledger/fabric-sdk-go/pkg/core/config"
+	"github.com/hyperledger/fabric-sdk-go/pkg/fabsdk"
 	"github.com/pkg/errors"
 )
 
@@ -31,10 +30,12 @@ type Handeler struct {
 	client *channel.Client
 	admin  *resmgmt.Client
 	sdk    *fabsdk.FabricSDK
-	event  *event.Client
 
 	//Basic Config
 	ConfigFile string
+
+	//Chaincode
+	ChainCodeID string
 }
 
 //Initializer creates the sdk context from config file and instantiate a sdk instance
