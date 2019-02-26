@@ -55,4 +55,13 @@ func main() {
 		fmt.Println("-------Successful  SetAsset Account--------")
 	}
 
+	txID, err = game_handler.QueryAsset("Acc1")
+	if err != nil {
+		fmt.Println(errors.Wrap(err, "Account QueryAsset game handler failed"))
+
+	} else {
+		fmt.Println("Query Value : ", txID)
+		fmt.Println("-------Successful  QueryAsset Account--------")
+	}
+
 }

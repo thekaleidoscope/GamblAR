@@ -40,7 +40,13 @@ func (handler *Handeler) QueryAsset(asset string) (string, error) {
 	var args []string
 	args = append(args, "getAccountInfo")
 	args = append(args, asset)
-	response, err := handler.client.Query(channel.Request{ChaincodeID: handler.ChainCodeID, Fcn: args[0], Args: [][]byte{[]byte(args[1])}})
+
+	clientContext := handler.sdk.ChannelContext(handler.ChannelID, fabsdk.WithUser("Admin"))
+	client, err := channel.New(clientContext)
+	if err != nil {
+		return "", errors.WithMessage(err, "failed to create new channel client ")
+	}
+	response, err := client.Query(channel.Request{ChaincodeID: handler.ChainCodeID, Fcn: args[0], Args: [][]byte{[]byte(args[1])}})
 	if err != nil {
 		return "", fmt.Errorf("failed to query: %v", err)
 	}
