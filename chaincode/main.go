@@ -12,6 +12,7 @@ type Account struct {
 }
 
 func (t *Account) Init(stub shim.ChaincodeStubInterface) peer.Response {
+	fmt.Println("---- Init ----")
 
 	fn, _ := stub.GetFunctionAndParameters()
 
@@ -23,6 +24,7 @@ func (t *Account) Init(stub shim.ChaincodeStubInterface) peer.Response {
 }
 
 func (t *Account) Invoke(stub shim.ChaincodeStubInterface) peer.Response {
+	fmt.Println("---- Invoke ----")
 
 	fn, args := stub.GetFunctionAndParameters()
 

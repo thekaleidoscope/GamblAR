@@ -2,6 +2,8 @@ package main
 
 import (
 	"fmt"
+	"os"
+	"time"
 
 	"github.com/GamblAR/atomic_elements"
 	"github.com/pkg/errors"
@@ -18,6 +20,10 @@ func main() {
 		},
 		Organizations: []string{"Org1", "Org2"},
 		ConfigFile:    "config.yaml",
+
+		ChainCodeID:     "account",
+		ChaincodeGoPath: os.Getenv("GOPATH"),
+		ChaincodePath:   "github.com/GamblAR/chaincode/",
 	}
 
 	fmt.Println("-------Initializing the game handler.--------")
@@ -38,13 +44,15 @@ func main() {
 	} else {
 		fmt.Println("-------Successful  Creating And Join Channel For each Organizations--------")
 	}
+	time.Sleep(30 * time.Second)
 
 	txID, err := game_handler.SetAsset([]string{"Acc1", "1000"})
 	if err != nil {
 		fmt.Println(errors.Wrap(err, "Account SetAsset game handler failed"))
 
 	} else {
+		fmt.Println("Setting Value TxID: ", txID)
 		fmt.Println("-------Successful  SetAsset Account--------")
 	}
-	fmt.Println(txID)
+
 }
