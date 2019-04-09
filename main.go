@@ -42,9 +42,12 @@ func main() {
 		fmt.Println(errors.Wrap(err, "CreateAndJoinChannel game handler failed"))
 
 	} else {
-		fmt.Println("-------Successful  Creating And Join Channel For each Organizations--------")
+		fmt.Println("------- Completed Chaincode Installation and Instantiation --------")
+
 	}
 	time.Sleep(30 * time.Second)
+
+	fmt.Println("-------  Invoking the chaincode to Create Asset and Set Value --------")
 
 	txID, err := game_handler.SetAsset([]string{"Acc1", "1000"})
 	if err != nil {
@@ -55,6 +58,8 @@ func main() {
 		fmt.Println("-------Successful  SetAsset Account--------")
 	}
 
+	fmt.Println("-------  Query the chaincode to Get Value of Asset --------")
+
 	txID, err = game_handler.QueryAsset("Acc1")
 	if err != nil {
 		fmt.Println(errors.Wrap(err, "Account QueryAsset game handler failed"))
@@ -62,6 +67,18 @@ func main() {
 	} else {
 		fmt.Println("Query Value : ", txID)
 		fmt.Println("-------Successful  QueryAsset Account--------")
+	}
+
+	game_handler.MakeBet("Game1", "Acc1", "2000")
+	game_handler.MakeBet("Game1", "Acc2", "2000")
+
+	err = game_handler.WriteBetsToLedger("Game1")
+	if err != nil {
+		fmt.Println(errors.Wrap(err, "Writing bets to blockchain failed"))
+
+	} else {
+
+		fmt.Println("-------Successfully written bets to blockchain--------")
 	}
 
 }

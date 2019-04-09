@@ -43,6 +43,14 @@ type Handeler struct {
 	ChaincodePath   string
 }
 
+type Bid struct {
+	GameName  string
+	Acc       string
+	BidAmount string
+}
+
+type Game map[string]Bid
+
 //Initializer creates the sdk context from config file and instantiate a sdk instance
 func (handel *Handeler) Initializer() error {
 
@@ -114,6 +122,9 @@ func (handel *Handeler) CreateAndJoinChannel() error {
 			fmt.Println(orgName, "Joined Channel", handel.ChannelID)
 
 		}
+		fmt.Println("-------Successful  Creating And Join Channel For each Organizations--------\n")
+
+		fmt.Println("------- Chaincode Installation and Instantiation --------")
 
 		ccPkg, err := packager.NewCCPackage(handel.ChaincodePath, handel.ChaincodeGoPath)
 		if err != nil {

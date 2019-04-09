@@ -24,7 +24,6 @@ func (t *Account) Init(stub shim.ChaincodeStubInterface) peer.Response {
 }
 
 func (t *Account) Invoke(stub shim.ChaincodeStubInterface) peer.Response {
-	fmt.Println("---- Invoke ----")
 
 	fn, args := stub.GetFunctionAndParameters()
 
@@ -32,9 +31,11 @@ func (t *Account) Invoke(stub shim.ChaincodeStubInterface) peer.Response {
 	var err error
 
 	if fn == "setAccountInfo" {
-		result, err = chaincodehelpers.SetAccountInfo(stub, args)
+		result, err = chaincodehelpers.WriteToBlockchain(stub, args)
 	} else if fn == "getAccountInfo" {
-		result, err = chaincodehelpers.GetAccountInfo(stub, args)
+		result, err = chaincodehelpers.ReadFromBlockchain(stub, args)
+	} else if fn == "makeBet" {
+
 	}
 
 	if err != nil {

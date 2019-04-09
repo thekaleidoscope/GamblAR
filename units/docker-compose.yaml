@@ -6,7 +6,7 @@ networks:
 services:
 
   orderer.gamblar.com:
-    image: hyperledger/fabric-orderer:$IMAGE_TAG
+    image: hyperledger/fabric-orderer:amd64-1.4.0
     container_name: orderer.gamblar.com
     environment:
       - ORDERER_GENERAL_LOGLEVEL=debug
@@ -36,7 +36,7 @@ services:
           - orderer.gamblar.com
 
   ca.org1.gamblar.com:
-    image: hyperledger/fabric-ca:$IMAGE_TAG
+    image: hyperledger/fabric-ca:amd64-1.4.0
     container_name: ca.org1.gamblar.com
     environment:
       - FABRIC_CA_HOME=/etc/hyperledger/fabric-ca-server
@@ -57,7 +57,7 @@ services:
           - ca.org1.gamblar.com
 
   peer0.org1.gamblar.com:
-    image: hyperledger/fabric-peer:$IMAGE_TAG
+    image: hyperledger/fabric-peer:amd64-1.4.0
     container_name: peer0.org1.gamblar.com
     environment:
       - CORE_VM_ENDPOINT=unix:///host/var/run/docker.sock
@@ -98,7 +98,7 @@ services:
           - peer0.org1.gamblar.com
 
   peer1.org1.gamblar.com:
-    image: hyperledger/fabric-peer:$IMAGE_TAG
+    image: hyperledger/fabric-peer:amd64-1.4.0
     container_name: peer1.org1.gamblar.com
     environment:
       - CORE_VM_ENDPOINT=unix:///host/var/run/docker.sock
@@ -140,7 +140,7 @@ services:
           - peer1.org1.gamblar.com
 
   ca.org2.gamblar.com:
-    image: hyperledger/fabric-ca:$IMAGE_TAG
+    image: hyperledger/fabric-ca:amd64-1.4.0
     container_name: ca.org2.gamblar.com
     environment:
       - FABRIC_CA_HOME=/etc/hyperledger/fabric-ca-server
@@ -161,7 +161,7 @@ services:
           - ca.org2.gamblar.com
 
   peer0.org2.gamblar.com:
-    image: hyperledger/fabric-peer:$IMAGE_TAG
+    image: hyperledger/fabric-peer:amd64-1.4.0
     container_name: peer0.org2.gamblar.com
     environment:
       - CORE_VM_ENDPOINT=unix:///host/var/run/docker.sock
@@ -202,7 +202,7 @@ services:
           - peer0.org2.gamblar.com
 
   peer1.org2.gamblar.com:
-    image: hyperledger/fabric-peer:$IMAGE_TAG
+    image: hyperledger/fabric-peer:amd64-1.4.0
     container_name: peer1.org2.gamblar.com
     environment:
       - CORE_VM_ENDPOINT=unix:///host/var/run/docker.sock
