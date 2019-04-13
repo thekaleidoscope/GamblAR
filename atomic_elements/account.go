@@ -9,7 +9,7 @@ import (
 )
 
 var (
-	game = make(Game)
+	gameDB = make(GameDB)
 )
 
 func (handler *Handeler) SetAsset(args []string) (string, error) {

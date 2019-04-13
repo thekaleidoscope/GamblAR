@@ -47,9 +47,19 @@ type Bid struct {
 	GameName  string
 	Acc       string
 	BidAmount string
+	Section   string
 }
 
-type Game map[string]Bid
+//This is GameName -> {Bid}
+type ElectedGame map[string]Bid
+
+type GameMeta struct {
+	game      ElectedGame
+	completed bool
+}
+
+//This Maps all games to one
+type GameDB map[string]GameMeta
 
 //Initializer creates the sdk context from config file and instantiate a sdk instance
 func (handel *Handeler) Initializer() error {

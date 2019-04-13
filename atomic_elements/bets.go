@@ -9,19 +9,19 @@ import (
 	"github.com/pkg/errors"
 )
 
-type gameMeta struct {
-	game      Game
-	completed bool
+func (game GameDB) AddBet(name string, acc string, bidAmt string, selection string) error {
+	if !game[name].completed {
+
+		game[name].game[name] = Bid{name, acc, bidAmt, selection}
+	} else {
+		return errors.Errorf("Game already ended.")
+	}
+	return nil
 }
 
-func (game Game) AddBet(name string, acc string, bidAmt string) {
-	//Add the bet details
-	game[acc] = Bid{name, acc, bidAmt}
-}
-
-func (handler *Handeler) MakeBet(name string, acc string, bidAmt string) {
-
-	game.AddBet(name, acc, bidAmt)
+//Begin game and end betting period
+func (game GameDB) EndBetting(name string) {
+	game[name].completed = true
 
 }
 
