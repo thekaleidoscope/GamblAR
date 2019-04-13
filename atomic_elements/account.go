@@ -8,10 +8,6 @@ import (
 	"github.com/pkg/errors"
 )
 
-var (
-	game = make(Game)
-)
-
 func (handler *Handeler) SetAsset(args []string) (string, error) {
 
 	// Prepare arguments

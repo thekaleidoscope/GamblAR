@@ -9,6 +9,10 @@ import (
 	"github.com/pkg/errors"
 )
 
+var (
+	game = make(Game)
+)
+
 type gameMeta struct {
 	game      Game
 	completed bool
