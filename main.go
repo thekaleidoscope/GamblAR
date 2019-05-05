@@ -69,7 +69,7 @@ func main() {
 		fmt.Println("-------Successful  QueryAsset Account--------")
 	}
 
-	game_handler.MakeBet("Game1", "Acc1", "2000")
+	gameDB.AddBet("Game1", "Acc1", "2000")
 	game_handler.MakeBet("Game1", "Acc2", "2000")
 
 	err = game_handler.WriteBetsToLedger("Game1")

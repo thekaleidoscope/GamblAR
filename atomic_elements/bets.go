@@ -9,10 +9,11 @@ import (
 	"github.com/pkg/errors"
 )
 
-func (game GameDB) AddBet(name string, acc string, bidAmt string, selection string) error {
-	if !game[name].completed {
-
-		game[name].game[name] = Bid{name, acc, bidAmt, selection}
+func (gameDB GameDB) AddBet(name string, acc string,
+	bidAmt string, selection string) error {
+	if !gameDB[name].completed {
+		gameDB[name].game[name] =
+			Bid{name, acc, bidAmt, selection}
 	} else {
 		return errors.Errorf("Game already ended.")
 	}
@@ -21,11 +22,11 @@ func (game GameDB) AddBet(name string, acc string, bidAmt string, selection stri
 
 //Begin game and end betting period
 func (game GameDB) EndBetting(name string) {
-	game[name].completed = true
+	game[name] = GameMeta{game[name].game, true}
 
 }
 
-func (handler *Handeler) WriteBetsToLedger(name string) error {
+func (handler *Handeler) WriteBetsToLedger(game GameDB, name string) error {
 
 	gameData, err := json.Marshal(game)
 	if err != nil {
