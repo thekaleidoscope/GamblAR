@@ -9,6 +9,10 @@ import (
 	"github.com/pkg/errors"
 )
 
+var (
+	gameDB = make(atomic_elements.GameDB, 100)
+)
+
 func main() {
 	game_handler := atomic_elements.Handeler{
 		ChannelID: "townchannel",
@@ -68,11 +72,11 @@ func main() {
 		fmt.Println("Query Value : ", txID)
 		fmt.Println("-------Successful  QueryAsset Account--------")
 	}
+	try := 1
+	gameDB.AddBet("Game1", "Acc1", "100", "Opt1", try)
+	gameDB.EndBetting("Game1")
 
-	gameDB.AddBet("Game1", "Acc1", "2000")
-	game_handler.MakeBet("Game1", "Acc2", "2000")
-
-	err = game_handler.WriteBetsToLedger("Game1")
+	err = game_handler.WriteBetsToLedger(gameDB, "Game1")
 	if err != nil {
 		fmt.Println(errors.Wrap(err, "Writing bets to blockchain failed"))
 

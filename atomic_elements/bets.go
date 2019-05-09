@@ -10,7 +10,13 @@ import (
 )
 
 func (gameDB GameDB) AddBet(name string, acc string,
-	bidAmt string, selection string) error {
+	bidAmt string, selection string, try int) error {
+
+	if try == 1 {
+		electedGame := make(ElectedGame)
+		gameDB[name] = GameMeta{electedGame, false}
+	}
+
 	if !gameDB[name].completed {
 		gameDB[name].game[name] =
 			Bid{name, acc, bidAmt, selection}

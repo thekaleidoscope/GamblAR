@@ -8,10 +8,6 @@ import (
 	"github.com/pkg/errors"
 )
 
-var (
-	gameDB = make(GameDB)
-)
-
 func (handler *Handeler) SetAsset(args []string) (string, error) {
 
 	// Prepare arguments
