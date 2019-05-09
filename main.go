@@ -29,6 +29,7 @@ func main() {
 		ChaincodeGoPath: os.Getenv("GOPATH"),
 		ChaincodePath:   "github.com/GamblAR/chaincode/",
 	}
+	try := 1
 
 	fmt.Println("-------Initializing the game handler.--------")
 	err := game_handler.Initializer()
@@ -72,9 +73,14 @@ func main() {
 		fmt.Println("Query Value : ", txID)
 		fmt.Println("-------Successful  QueryAsset Account--------")
 	}
-	try := 1
+
 	gameDB.AddBet("Game1", "Acc1", "100", "Opt1", try)
+	fmt.Println("-------Made a bet on Game1, By Acc1 of 100 on Opt1  --------")
+
+	try++
+
 	gameDB.EndBetting("Game1")
+	fmt.Println("-------Betting ended for Game 1 --------")
 
 	err = game_handler.WriteBetsToLedger(gameDB, "Game1")
 	if err != nil {
